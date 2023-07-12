@@ -1,3 +1,5 @@
+[https://apify.com/epctex/apartmentlist-scraper](https://apify.com/epctex/apartmentlist-scraper?fpr=yhdrb)
+
 # Actor - Apartment List Scraper
 
 ## Apartment List scraper
@@ -6,15 +8,15 @@ ApartmentList.com is a popular online platform that connects renters with apartm
 
 With its extensive database, ApartmentList.com provides detailed information about each apartment, including rental prices, amenities, location, and more. However, accessing this data programmatically can be challenging, as the platform does not offer a dedicated API for developers to retrieve information efficiently.
 
-That's where our ApartmentList.com scraper comes in. This powerful tool is designed to extract data from ApartmentList.com, enabling you to gather the information you need for your specific purposes. Whether you're a real estate professional, a researcher, or someone searching for an apartment, this scraper simplifies the process of accessing and organizing the apartment listings from ApartmentList.com.
+That's where our ApartmentList.com scraper comes in. This powerful tool is designed to extract data from ApartmentList.com, enabling you to gather the information you need for your specific purposes. Whether you're a real estate professional, a researcher, or someone searching for an apartment, this scraper simplifies the process of accessing and organizing apartment listings from ApartmentList.com.
 
 The Apartment List data scraper supports the following features:
 
 -   Scrape lists - Scrape any list that you'd like to get from Apartments List
 
--   Scrape property details - Scrape a very detailed information for each of the property that you'd like to get.
+-   Scrape property details - Scrape very detailed information for each of the properties that you'd like to get.
 
-## Bugs, fixes, updates and changelog
+## Bugs, fixes, updates, and changelog
 
 This scraper is under active development. If you have any feature requests you can create an issue from [here](https://github.com/epctex/apartmentlist-scraper/issues).
 
@@ -23,38 +25,44 @@ This scraper is under active development. If you have any feature requests you c
 
 The input of this scraper should be JSON containing the list of pages on Apartment List that should be visited. Required fields are:
 
-- `startUrls`: (Optional) (Array) List of Apartment List URLs. You should only provide news list, jobs list or detail URLs.
+- `startUrls`: (Optional) (Array) List of Apartment List URLs. You should only provide a news list, jobs list, or detailed URLs.
 
-- `endPage`: (Optional) (Number) Final number of page that you want to scrape. Default is `Infinite`. This is applies to all `search` request and `startUrls` individually.
+- `endPage`: (Optional) (Number) Final number of page that you want to scrape. The default is `Infinite`. This applies to all `search` requests and `startUrls` individually.
 
 - `maxItems`: (Optional) (Number) You can limit scraped items. This should be useful when you search through the big lists or search results.
 
 - `proxy`: (Required) (Proxy Object) Proxy configuration.
 
-- `extendOutputFunction`: (Optional) (String) Function that takes a JQuery handle ($) as argument and returns object with data.
+- `extendOutputFunction`: (Optional) (String) Function that takes a JQuery handle ($) as an argument and returns an object with data.
 
-- `customMapFunction`: (Optional) (String) Function that takes each objects handle as argument and returns object with executing the function.
+- `customMapFunction`: (Optional) (String) Function that takes each object's handle as an argument and returns the object with executing the function.
 
 This solution requires the use of **Proxy servers**, either your own proxy servers or you can use [Apify Proxy](https://www.apify.com/docs/proxy).
 
 ### Tip
 
-When you want to have a scrape over a specific list URL, just copy and paste the link as one of the **startUrl**.
+When you want to scrape over a specific list URL, just copy and paste the link as one of the **startUrl**.
 
 If you would like to scrape only the first page of a list then put the link for the page and have the `endPage` as 1.
 
-With the last approach that explained above you can also fetch any interval of pages. If you provide the 5th page of a list and define the `endPage` parameter as 6 then you'll have the 5th and 6th pages only.
+With the last approach that is explained above you can also fetch any interval of pages. If you provide the 5th page of a list and define the `endPage` parameter as 6 then you'll have the 5th and 6th pages only.
 
 ### Compute Unit Consumption
 
-The actor optimized to run blazing fast and scrape as many items as possible. Therefore, it forefronts all the detail requests. If actor doesn't block very often it'll scrape 100 listings in 4 minutes with ~0.01-0.03 compute units.
+The actor is optimized to run blazing fast and scrape as many items as possible. Therefore, it forefronts all the detailed requests. If the actor doesn't block very often it'll scrape 100 listings in 4 minutes with ~0.01-0.03 compute units.
 
 ### Apartment List Scraper Input example
 
 ```json
 {
   "startUrls": [
-    "https://www.apartmentlist.com/co/denver"
+    "https://www.apartmentlist.com/tx/frisco/the-commons-of-chapel-creek",
+    "https://www.apartmentlist.com/tx/frisco/villas-of-chapel-creek",
+    "https://www.apartmentlist.com/tx/frisco/legends-at-legacy--1",
+    "https://www.apartmentlist.com/tx/frisco/the-kathryn",
+    "https://www.apartmentlist.com/tx/frisco/jefferson-at-the-grove",
+    "https://www.apartmentlist.com/tx/frisco/sorrel-phillips-creek-ranch",
+    "https://www.apartmentlist.com/tx/frisco"
   ],
   "proxy": {
     "useApifyProxy": true
@@ -69,13 +77,13 @@ The actor optimized to run blazing fast and scrape as many items as possible. Th
 During the run, the actor will output messages letting you know what is going on. Each message always contains a short label specifying which page from the provided list is currently specified.
 When items are loaded from the page, you should see a message about this event with a loaded item count and total item count for each page.
 
-If you provide incorrect input to the actor, it will immediately stop with failure state and output an explanation of what is wrong.
+If you provide incorrect input to the actor, it will immediately stop with a failure state and output an explanation of what is wrong.
 
 ## Apartment List Export
 
 During the run, the actor stores results into a dataset. Each item is a separate item in the dataset.
 
-You can manage the results in any languague (Python, PHP, Node JS/NPM). See the FAQ or <a href="https://www.apify.com/docs/api" target="blank">our API reference</a> to learn more about getting results from this Apartment List actor.
+You can manage the results in any language (Python, PHP, Node JS/NPM). See the FAQ or <a href="https://www.apify.com/docs/api" target="blank">our API reference</a> to learn more about getting results from this Apartment List actor.
 
 ## Scraped Apartment List Properties
 
@@ -1006,5 +1014,5 @@ The structure of each item in Apartment List looks like this:
 }
 ```
 
-## Contact 
-Please visit us through [epctex.com](https://epctex.com) to see all the products that is available for you. If you are looking for any custom integration or so, please reach out to us through the chat box in [epctex.com](https://epctex.com). In need of support? [devops@epctex.com](mailto:devops@epctex.com) is at your service.
+## Contact
+Please visit us through [epctex.com](https://epctex.com) to see all the products that are available for you. If you are looking for any custom integration or so, please reach out to us through the chat box in [epctex.com](https://epctex.com). In need of support? [devops@epctex.com](mailto:devops@epctex.com) is at your service.
